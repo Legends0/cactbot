@@ -143,7 +143,6 @@ const primalOutputStrings = {
   },
 };
 
-<<<<<<< .merge_file_a11360
 // These keys map effect ids to `intermediateRelativityOutputStrings` keys.
 const effectIdToOutputStringKey = {
   '690': 'flare',
@@ -176,7 +175,7 @@ const intermediateRelativityOutputStrings = {
     en: 'Aero',
   },
 };
-=======
+
 // Due to changes introduced in patch 5.2, overhead markers now have a random offset
 // added to their ID. This offset currently appears to be set per instance, so
 // we can determine what it is from the first overhead marker we see.
@@ -205,7 +204,6 @@ const numberOutputStrings = [0, 1, 2, 3, 4].map((n) => {
     ko: str,
   };
 });
->>>>>>> .merge_file_a00536
 
 export default {
   zoneId: ZoneId.EdensPromiseEternitySavage,
