@@ -584,7 +584,7 @@ export default {
       id: 'E12S Oracle Basic Relativity Shadow Eye Me',
       netRegex: NetRegexes.gainsEffect({ effectId: '998' }),
       condition: (data, matches) => data.phase === 'basic' && data.spell[matches.target] === 'eye' && data.spell[data.me] === 'eye',
-      delaySeconds: 19,
+      delaySeconds: (data, matches) => parseFloat(matches.duration) - 2.5,
       supressSeconds: 2,
       infoText: (data, _, output) => output.text(),
       outputStrings: {
@@ -602,7 +602,7 @@ export default {
       id: 'E12S Oracle Basic Relativity Shadow Eye Other',
       netRegex: NetRegexes.gainsEffect({ effectId: '998' }),
       condition: (data, matches) => data.phase === 'basic' && data.spell[matches.target] === 'eye' && data.spell[data.me] !== 'eye',
-      delaySeconds: 19,
+      delaySeconds: (data, matches) => parseFloat(matches.duration) - 2.5,
       supressSeconds: 2,
       // Let's just assume these people are stacked.
       // We could call out both names, but it's probably unnecessary.
@@ -751,7 +751,7 @@ export default {
       // For all relativities, players should look outside during the final return effect.
       id: 'E12S Relativity Look Outside',
       netRegex: NetRegexes.gainsEffect({ effectId: '994' }),
-      condition: Conditions.targetIsYou(),
+      condition: (data, matches) => data.phase !== 'basic' && matches.target === data.me,
       delaySeconds: (data, matches) => parseFloat(matches.duration) - 2.5,
       alertText: (data, _, output) => output.text(),
       outputStrings: {
