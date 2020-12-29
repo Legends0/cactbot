@@ -572,10 +572,41 @@ export default {
       run: (data) => data.phase = 'basic',
     },
     {
-      id: 'E12S Basic Relativity Look Away',
+      id: 'E12S Basic Relativity Shadow Eye Collect',
       netRegex: NetRegexes.gainsEffect({ effectId: '998' }),
       condition: (data, matches) => data.phase === 'basic',
-      Responses.lookAwayFromTarget('alert'),
+      run: function(data, matches) {
+        data.spell = data.spell || {};
+        data.spell[matches.target] = 'eye';
+      },
+    },
+    {
+      id: 'E12S Basic Relativity Shadow Eye Me',
+      netRegex: NetRegexes.gainsEffect({ effectId: '998' }),
+      condition: (data, matches) => data.phase === 'basic' && data.spell[matches.target] === 'eye' && data.spell[data.me] === 'eye',
+      delaySeconds: 19,
+      supressSeconds: 2,
+      infoText: (data, _, output) => output.text(),
+      outputStrings: {
+        text: {
+          en: 'Eye on YOU',
+          de: 'Auge auf DIR',
+          fr: 'Œil sur VOUS',
+          ja: '自分に目',
+          cn: '石化眼点名',
+          ko: '시선징 대상자',
+        },
+      },
+    },
+    {
+      id: 'E12S Basic Relativity Shadow Eye Other',
+      netRegex: NetRegexes.gainsEffect({ effectId: '998' }),
+      condition: (data, matches) => data.phase === 'basic' && data.spell[matches.target] === 'eye' && data.spell[data.me] !== 'eye',
+      delaySeconds: 19,
+      supressSeconds: 2,
+      // Let's just assume these people are stacked.
+      // We could call out both names, but it's probably unnecessary.
+      response: Responses.lookAwayFromTarget('alert'),
     },
     {
       // Could improve this with the Cardinal / Inter-cardinal to move to by grabbing Oracle's facing position
