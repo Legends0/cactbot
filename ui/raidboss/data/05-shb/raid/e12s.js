@@ -572,6 +572,12 @@ export default {
       run: (data) => data.phase = 'basic',
     },
     {
+      // Could improve this with the Cardinal / Inter-cardinal to move to by grabbing Oracle's facing position
+      id: 'E12S Cataclysm',
+      netRegex: NetRegexes.startsUsing({ source: 'Oracle Of Darkness', id: '58C2', capture: false }),
+      response: Responses.getBehind(),
+    },
+    {
       id: 'E12S Oracle Intermediate Relativity',
       netRegex: NetRegexes.startsUsing({ source: 'Oracle Of Darkness', id: '58E1', capture: false }),
       condition: Conditions.caresAboutAOE(),
