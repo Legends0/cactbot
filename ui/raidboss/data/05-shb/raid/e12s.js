@@ -572,7 +572,7 @@ export default {
       run: (data) => data.phase = 'basic',
     },
     {
-      id: 'E12S Basic Relativity Shadow Eye Collect',
+      id: 'E12S Oracle Basic Relativity Shadow Eye Collect',
       netRegex: NetRegexes.gainsEffect({ effectId: '998' }),
       condition: (data, matches) => data.phase === 'basic',
       run: function(data, matches) {
@@ -581,7 +581,7 @@ export default {
       },
     },
     {
-      id: 'E12S Basic Relativity Shadow Eye Me',
+      id: 'E12S Oracle Basic Relativity Shadow Eye Me',
       netRegex: NetRegexes.gainsEffect({ effectId: '998' }),
       condition: (data, matches) => data.phase === 'basic' && data.spell[matches.target] === 'eye' && data.spell[data.me] === 'eye',
       delaySeconds: 19,
@@ -599,7 +599,7 @@ export default {
       },
     },
     {
-      id: 'E12S Basic Relativity Shadow Eye Other',
+      id: 'E12S Oracle Basic Relativity Shadow Eye Other',
       netRegex: NetRegexes.gainsEffect({ effectId: '998' }),
       condition: (data, matches) => data.phase === 'basic' && data.spell[matches.target] === 'eye' && data.spell[data.me] !== 'eye',
       delaySeconds: 19,
@@ -610,7 +610,7 @@ export default {
     },
     {
       // Could improve this with the Cardinal / Inter-cardinal to move to by grabbing Oracle's facing position
-      id: 'E12S Cataclysm',
+      id: 'E12S Oracle Cataclysm',
       netRegex: NetRegexes.startsUsing({ source: 'Oracle Of Darkness', id: '58C2', capture: false }),
       response: Responses.getBehind(),
     },
