@@ -572,6 +572,12 @@ export default {
       run: (data) => data.phase = 'basic',
     },
     {
+      id: 'E12S Basic Relativity Look Away',
+      netRegex: NetRegexes.gainsEffect({ effectId: '998' }),
+      condition: (data, matches) => data.phase === 'basic',
+      Responses.lookAwayFromTarget('alert'),
+    },
+    {
       // Could improve this with the Cardinal / Inter-cardinal to move to by grabbing Oracle's facing position
       id: 'E12S Cataclysm',
       netRegex: NetRegexes.startsUsing({ source: 'Oracle Of Darkness', id: '58C2', capture: false }),
